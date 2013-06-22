@@ -1,22 +1,23 @@
 class ProjectsController < ApplicationController
 	def index
-        p '--------------'
+        p '---index---'
 		p params
-		p '--------------'
+		p '---index---'
 		@projects = Project.all
 	end
 
 	def new
-		@project = Project.new
-		p '--------------'
+		p '---new---'
 		p params
-		p '--------------'
+		p '---new---'
+		@project = Project.new
+
 	end
 
 	def create
-        p '--------------'
+        p '---create---'
 		p params
-		p '--------------'
+		p '---create---'
 
 		@project = Project.new(project_params)
 
@@ -34,6 +35,25 @@ class ProjectsController < ApplicationController
 	def show
 	  @project = Project.find(params[:id])
 	end
+
+    def edit
+    	@project = Project.find(params[:id])
+    end 
+
+    def update
+      p '---update---'
+      p params
+      p '---update---'
+      @project = Project.find(params[:id])
+      if @project.update(project_params)
+        flash[:notice] = "Project has been updated."
+        redirect_to @project
+      else
+      	flash[:alert] = "Project has not been updated."
+      	render action: "edit"
+      end
+
+    end
 
 	private
 
