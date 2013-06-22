@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
         p '--------------'
 		p params
 		p '--------------'
+		@projects = Project.all
 	end
 
 	def new
