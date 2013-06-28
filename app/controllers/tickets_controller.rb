@@ -3,10 +3,16 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :update, :destroy]
 
 	def new
+	  p '---new---'
+      p params
+      p '---new---'
 	  @ticket = @project.tickets.build
 	end
 
 	def create
+	  p '---create---'
+      p params
+      p '---create---'
       @ticket = @project.tickets.build(ticket_params)
       if @ticket.save
       	flash[:notice] = "Ticket has been created."
@@ -18,7 +24,9 @@ class TicketsController < ApplicationController
 	end
 
 	def show
-	  
+	  p '---show---'
+      p params
+      p '---show---'
 	end
   
   private

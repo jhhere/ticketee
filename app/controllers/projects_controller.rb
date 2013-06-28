@@ -38,11 +38,15 @@ class ProjectsController < ApplicationController
 	end	
 
 	def show
-	  
+	  p '---show---'
+      p params
+      p '---show---'
 	end
 
     def edit
-    	
+      p '---edit---'
+      p params
+      p '---edit---'
     end 
 
     def update
@@ -61,6 +65,9 @@ class ProjectsController < ApplicationController
     end
 
     def destroy
+      p '---destroy---'
+      p params
+      p '---destroy---'
       @project = Project.find(params[:id])
       @project.destroy
 
