@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_project
-  before_action :set_ticket, only: [:show, :update, :destroy]
+  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
 	def new
 	  p '---new---'
@@ -28,11 +28,31 @@ class TicketsController < ApplicationController
       p params
       p '---show---'
 	end
+
+	def edit
+	  p '---edit---'
+      p params
+      p '---edit---'	
+      	
+	end
+
+	def update
+	  if @ticket.update(ticket_params)
+	  	flash[:notice] = "Ticket has been updated."
+
+	  	redirect_to [@project, @ticket]
+	  else
+	  	flash[:alert] = "Ticket has not been updated."
+
+	  	render action: "edit"
+	  end
+	end
   
   private
     def set_ticket
       @ticket = @project.tickets.find(params[:id])
     end
+
     def set_project
       @project = Project.find(params[:project_id])
     end
