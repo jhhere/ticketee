@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+
+en:
+  helpers:
+    submit:
+      create: "Sign Up"
+      update: "Update Profile"
