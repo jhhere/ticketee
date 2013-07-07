@@ -19,7 +19,7 @@ feature "Editing Users" do
     click_link "Edit Profile"
 
     fill_in "Username", with: "new_username"
-    click_button "Update Profile"
+    click_button "Update User"
 
     expect(page).to have_content("Profile has been updated.")
   end
