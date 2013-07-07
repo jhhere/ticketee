@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
+
+    def admins_only(&block)
+      block.call if current_user.try(:admin?)
+    end
+    helper_method :admins_only
+
     def require_signin!
       if current_user.nil?
       	flash[:error] = "You need to sign in or sign up before continuing."
